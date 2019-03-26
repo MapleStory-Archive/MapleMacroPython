@@ -1,0 +1,4 @@
+必要なもの
+・Anaconda
+・Pyautogui
+・OpenCV

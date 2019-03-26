@@ -1,0 +1,22 @@
+#returnCode
+MAPLE_SUCCESS   = 0
+MAPLE_ERROR     = 1
+flapSuccess     = 0
+NOT_SCRIPT_NAME = 99
+
+#JsonValue
+MAPLE_REQUEST_BODY = 'MapleRequestBody'
+JOB                = 'Job'
+REGION             = 'Region'
+MAP_NAME           = 'MapName'
+SCRIPT_NAME        = 'ScriptName'
+
+#PictureCheckXY
+CAVELOAD_LEFT_X_MIN  = 35
+CAVELOAD_LEFT_X_MAX  = 55
+CAVELOAD_LEFT_Y_MIN  = 100
+CAVELOAD_LEFT_Y_MAX  = 120
+CAVELOAD_RIGHT_X_MIN = 160
+CAVELOAD_RIGHT_X_MAX = 180
+CAVELOAD_RIGHT_Y_MIN = 100
+CAVELOAD_RIGHT_Y_MAX = 120
