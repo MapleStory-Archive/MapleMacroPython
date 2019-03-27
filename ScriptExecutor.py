@@ -6,6 +6,7 @@ import Common.ConstDefine as const
 import pyautogui
 import Library.MapleLibrary as lib
 import cv2
+import Public.UWSCParser as parser
 
 class ScriptExecutor():
 
@@ -28,18 +29,10 @@ class ScriptExecutor():
     # execCmd = jsonJobValue + '.' + jsonScriptName + '.start()'
     # print(execCmd)
     #eval(execCmd)
-    def KBD(key, type, time):
-        _time = time / 1000 
-        if type == 0:
-            pyautogui.press(key, interval = _time)
-        elif type == 1:
-            pyautogui.keyDown(key, interval = _time)
-        elif type == 2:
-            pyautogui.keyUp(key, interval = _time)
-
-    KBD('a',0,100)
-    KBD('a',0,100)
-    KBD('a',0,100)
-    KBD('a',0,100)
-    KBD('a',0,100)
-    KBD('a',0,100)
+    uwsc = parser.Uwsc()
+    uwsc.BTN('left',400,300,500)
+    uwsc.KBD('a',0,1000)
+    if uwsc.chkimg('./Picture/test.png',0,0,0,2000,1000):
+        print (1)
+    else:
+        print (2)
