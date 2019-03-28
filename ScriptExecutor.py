@@ -2,7 +2,7 @@ import sys
 import configparser
 import json
 import Luminous
-import Common.ConstDefine as const
+import Common.const
 import pyautogui
 import Library.MapleLibrary as lib
 import cv2

@@ -29,34 +29,8 @@ import Common.Skill.Skill as skill
 import configparser
 import Common.ConstDefine as const
 import Library.MapleLibrary as lib
+import Public.UWSCParser
 
-LUMINOUS_INI_PATH = './Config/Luminous/KeySetting.ini'
-
-ini = configparser.ConfigParser()
-ini.read(LUMINOUS_INI_PATH, 'UTF-8')
-
-#Skill key Setting
-TELEPORT_KEY        = ini.get('Skill', 'TELEPORT_KEY')
-REFLECTION_KEY      = ini.get('Skill', 'REFLECTION_KEY')
-PSYCHOLOGY_DOOR_KEY = ini.get('Skill', 'PSYCHOLOGY_DOOR_KEY')
-PANISHING_KEY       = ini.get('Skill', 'PANISHING_KEY')
-ROPE_CONNECT_KEY    = ini.get('Skill', 'ROPE_CONNECT_KEY')
-RECOVERY_FAM_KEY    = ini.get('Skill', 'RECOVERY_FAM_KEY')
-SKILL_MACRO1_KEY    = ini.get('SkillMacro', 'SKILL_MACRO1_KEY')
-SKILL_MACRO2_KEY    = ini.get('SkillMacro', 'SKILL_MACRO1_KEY')
-
-"""
-testcode
-
-pyautogui.click(1366, 500, 0, 1, 'left')
-info = pyautogui.locateOnScreen('test.png')
-if info is not None:
-    x,y = pyautogui.center(info)
-    print("画像認識に成功しました。座標(x,y)=")
-    print(type(x))
-else:
-    print("画像認識に失敗しました。")
-"""
 
 def Attack( flapX_Min , flapX_Max , flapY_Min, flapY_Max, moveKey ):
     _equlibrium = False
@@ -94,10 +68,10 @@ def start():
 
     returnCode = Attack(const.CAVELOAD_LEFT_X_MIN,const.CAVELOAD_LEFT_X_MAX,const.CAVELOAD_LEFT_Y_MIN,const.CAVELOAD_LEFT_Y_MAX,'left')
     if returnCode != 0:
-        return const.MAPLE_ERROR
+        return 0
 
     returnCode = Attack(const.CAVELOAD_RIGHT_X_MIN,const.CAVELOAD_RIGHT_X_MAX,const.CAVELOAD_RIGHT_Y_MIN,const.CAVELOAD_RIGHT_Y_MAX,'right')
     if returnCode != 0:
-        return const.MAPLE_ERROR
+        return 0
 
-    #return const.MAPLE_SUCCESS
+    return 0
