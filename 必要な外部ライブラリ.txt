@@ -1,0 +1,5 @@
+必要なもの
+・Anaconda
+・Pyautogui
+・OpenCV
+・PyWin32 (Python for Windows Extensions)
