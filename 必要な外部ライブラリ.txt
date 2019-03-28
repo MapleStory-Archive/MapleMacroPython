@@ -1,5 +1,6 @@
-必要なもの
+﻿必要なもの
 ・Anaconda
 ・Pyautogui
 ・OpenCV
 ・PyWin32 (Python for Windows Extensions)
+・pyperclip
