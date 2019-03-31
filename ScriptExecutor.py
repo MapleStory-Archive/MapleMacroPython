@@ -31,5 +31,4 @@ class ScriptExecutor():
     # print(execCmd)
     #eval(execCmd)
     uwsc = parser.UwscFunction()
-    print (uwsc.GETTIME())
-    print (ug.G_TIME_YY)
+    uwsc.ACW("MapleStoryClass","MapleStory.exe",10,10)

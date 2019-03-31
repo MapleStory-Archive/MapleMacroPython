@@ -150,11 +150,14 @@ class UwscFunction:
     """
     def ACW(self, windowClassName ,windowName , xs , ys):
         hWnd = win32gui.FindWindow(windowClassName , None)
+        print (hWnd)
         if hWnd is not 0:
             win32gui.SetForegroundWindow(hWnd)
+            win32gui.MoveWindow(hWnd, xs, ys, 1024, 768, False)
+            #cv2.moveWindow(windowName, xs, ys)
         else:
             return 1
-        cv2.moveWindow(windowName, xs, ys)
+        
         return 0
 
 
