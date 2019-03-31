@@ -27,7 +27,7 @@ import pyautogui
 from time import sleep
 import Common.Skill.Skill as skill
 import configparser
-import Common.ConstDefine as const
+import Common.const as const
 import Library.MapleLibrary as lib
 import Public.UWSCParser
 
@@ -55,13 +55,6 @@ def Attack( flapX_Min , flapX_Max , flapY_Min, flapY_Max, moveKey ):
             print("Not Yellow Point.")
             flag = False
 
-        pyautogui.press(REFLECTION_KEY)
-        sleep(0.2)
-        pyautogui.press(REFLECTION_KEY)
-        sleep(0.2)
-        pyautogui.press(TELEPORT_KEY)
-        sleep(0.2)
-        pyautogui.press(TELEPORT_KEY)
 
 def start():
     print("CaveLoadAisleUp in")

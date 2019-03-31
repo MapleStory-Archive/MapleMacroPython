@@ -16,15 +16,9 @@ import win32gui
 import pyperclip
 import math
 from datetime import datetime
+import Public.UWSCGlobal as ug
 
-global G_TIME_YY
-global G_TIME_MM
-global G_TIME_DD
-global G_TIME_HH
-global G_TIME_NN
-global G_TIME_SS
-global G_TIME_ZZ
-global G_TIME_WW
+
 
 class UwscFunction:
 
@@ -42,9 +36,9 @@ class UwscFunction:
         if type == 0:
             pyautogui.press(  key, interval = sec)
         elif type == 1:
-            pyautogui.keyDown(key, interval = sec)
+            pyautogui.keyDown(key)
         elif type == 2:
-            pyautogui.keyUp(  key, interval = sec)
+            pyautogui.keyUp(key)
 
 
 
@@ -80,7 +74,7 @@ class UwscFunction:
     Return  : None
     備考    :
     """
-    def BTN(self, key, xs, ys, ms):
+    def BTN_CLICK(self, key, xs, ys, ms):
         sec = ms / 1000 # ミリ秒から秒へ変換
         pyautogui.click(x=xs, y=ys, button=key, interval=sec)
 
@@ -106,8 +100,11 @@ class UwscFunction:
         im = pyautogui.locateOnScreen(picPath, region=(x1 , y1, x2, y2))
         if im is None:
             return False
-
-        return True
+        else:
+            x, y = pyautogui.center(im)
+            ug.G_IMG_X = x
+            ug.G_IMG_Y = y 
+            return True
 
 
 
@@ -132,11 +129,11 @@ class UwscFunction:
         im = pyautogui.locateOnScreen(picPath, region=(x1 , y1, x2, y2), confidence=threshold)
         if im is None:
             return False
-
-        return True
-
-
-
+        else:
+            x, y = pyautogui.center(im)
+            ug.G_IMGX_X = x
+            ug.G_IMGX_Y = y 
+            return True
 
 
 
@@ -156,9 +153,9 @@ class UwscFunction:
         if hWnd is not 0:
             win32gui.SetForegroundWindow(hWnd)
         else:
-            return 1;
+            return 1
         cv2.moveWindow(windowName, xs, ys)
-        return 0;
+        return 0
 
 
 
@@ -170,7 +167,7 @@ class UwscFunction:
     備考    :
     """
     def SENDSTR(self, copyStr):
-        pyperclip.copy(copystr)
+        pyperclip.copy(copyStr)
 
 
 
@@ -196,13 +193,13 @@ class UwscFunction:
     """
     def GETTIME(self):
         now = datetime.now()
-        G_TIME_YY = now.year
-        G_TIME_MM = now.month
-        G_TIME_DD = now.day
-        G_TIME_HH = now.hour
-        G_TIME_NN = now.minute
-        G_TIME_SS = now.second
-        G_TIME_ZZ = math.floor(now.microsecond/1000)
+        ug.G_TIME_YY = now.year
+        ug.G_TIME_MM = now.month
+        ug.G_TIME_DD = now.day
+        ug.G_TIME_HH = now.hour
+        ug.G_TIME_NN = now.minute
+        ug.G_TIME_SS = now.second
+        ug.G_TIME_ZZ = math.floor(now.microsecond/1000)
         return now
 
 
@@ -214,16 +211,16 @@ class UwscFunction:
     Return  : 現在時刻 + $2 の時間
     備考    : format : 1970-01-01 00:00:00
     """
-    def GETTIME(self, afterSecondTime):
+    def GETTIME_AFTER(self, afterSecondTime):
         now = datetime.now()
         afterTime = now + datetime.timedelta(seconds=afterSecondTime)
-        G_TIME_YY = now.year
-        G_TIME_MM = now.month
-        G_TIME_DD = now.day
-        G_TIME_HH = now.hour
-        G_TIME_NN = now.minute
-        G_TIME_SS = now.second
-        G_TIME_ZZ = math.floor(now.microsecond/1000)
+        ug.G_TIME_YY = now.year
+        ug.G_TIME_MM = now.month
+        ug.G_TIME_DD = now.day
+        ug.G_TIME_HH = now.hour
+        ug.G_TIME_NN = now.minute
+        ug.G_TIME_SS = now.second
+        ug.G_TIME_ZZ = math.floor(now.microsecond/1000)
         return afterTime
 
 

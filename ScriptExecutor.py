@@ -7,6 +7,7 @@ import pyautogui
 import Library.MapleLibrary as lib
 import cv2
 import Public.UWSCParser as parser
+import Public.UWSCGlobal as ug
 
 class ScriptExecutor():
 
@@ -29,10 +30,6 @@ class ScriptExecutor():
     # execCmd = jsonJobValue + '.' + jsonScriptName + '.start()'
     # print(execCmd)
     #eval(execCmd)
-    uwsc = parser.Uwsc()
-    uwsc.BTN('left',400,300,500)
-    uwsc.KBD('a',0,1000)
-    if uwsc.chkimg('./Picture/test.png',0,0,0,2000,1000):
-        print (1)
-    else:
-        print (2)
+    uwsc = parser.UwscFunction()
+    print (uwsc.GETTIME())
+    print (ug.G_TIME_YY)
