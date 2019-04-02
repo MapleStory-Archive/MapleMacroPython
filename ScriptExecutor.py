@@ -4,7 +4,7 @@ import json
 import Luminous
 import Common.const
 import pyautogui
-import Library.MapleLibrary as lib
+import Library.MapleLibrary 
 import cv2
 import Public.UWSCParser as parser
 import Public.UWSCGlobal as ug
@@ -31,4 +31,4 @@ class ScriptExecutor():
     # print(execCmd)
     #eval(execCmd)
     uwsc = parser.UwscFunction()
-    uwsc.ACW("MapleStoryClass","MapleStory.exe",10,10)
+    #uwsc.ACW("MapleStoryClass","MapleStory.exe",10,10)

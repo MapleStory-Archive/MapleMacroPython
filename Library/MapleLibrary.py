@@ -9,44 +9,26 @@
 
 import configparser
 import cv2
-from PIL import ImageGrab
+import pyautogui
+import Public.UWSCParser as parser
+import time
+import Config.Common.KeySetting as commonKey
  
-def getKeySetting(iniFilePath):
-    ini = configparser.ConfigParser()
-    ini.read('./config.ini', 'UTF-8')
+class MapleLibrary:
+    testS = 0
 
-def chkimgXY(picPath,transFlag,x1,y1,x2,y2):
-    #Screen Shot
-    ImageGrab.grab((x1, y1, x2, y2)).save('./tmp/ss.png')
+    # コンストラクタ
+    def __init__(self):
+        # インスタンス間で共通のUWSC移行クラスのuwscインスタンスを生成
+        self.uwsc = parser.UWSCFunction()
+        self.comKey = commonKey.CommonKeySetting()
+    
+    def checkFamiliarPower(self):
+        self.uwsc.KBD(self.comKey.OPEN_FAM_KEY, 0, 300)
+        time.sleep(1)
+        if self.uwsc.chkimg("../picture/fam500_or_less.bmp",0,0,0,1368,800):
+            self.uwsc.KBD(self.comKey.RECV_FAM_KEY,0,10)
+            #logger.logWriter(LogLevel.LOG_INFO,Messages.RECOVERY_FAMILIAR_POWER);
 
-    #ImagePicture
-    img = cv2.imread("./tmp/ss.png")
-    temp = cv2.imread(picPath)
+        return
 
-    #TemplateMatching
-    match = cv2.matchTemplate(img, temp, cv2.TM_SQDIFF)
-
-    #Get Degree of similarity
-    min_value, max_value, min_pt, max_pt = cv2.minMaxLoc(match)
-
-    return min_pt
-
-def chkimg(picPath,transFlag,x1,y1,x2,y2):
-#Screen Shot
-    ImageGrab.grab((x1, y1, x2, y2)).save('./tmp/ss.png')
-
-    #ImagePicture
-    img = cv2.imread("./tmp/ss.png")
-    temp = cv2.imread(picPath)
-
-    #TemplateMatching
-    match = cv2.matchTemplate(img, temp, cv2.TM_SQDIFF)
-
-    #Get Degree of similarity
-    min_value, max_value, min_pt, max_pt = cv2.minMaxLoc(match)
-    x,y = min_pt
-
-    if x1 < x and x < x2 and y1 < y and y < y2:
-        return True
-
-    return False
